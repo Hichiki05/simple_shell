@@ -6,23 +6,19 @@
 @size: the size of the command
 */
 
-void read(char *command, size_t size)
+char read(void)
 {
-	if (fgets(command, size, stdin) == NULL)
+	char *sent = NULL;
+	size_t lent = 0;
+	ssize_t i;
+
+	if (isatty(STDOUT_FILENO))
+	write(STDOUT_FILENO, "$ ", 2);
+	i = getline(&sent, &lent, stdin);
+	if (i == -1)
 	{
-		if (feof(stdin))
-		{
-			print("\n");
-			exit(SUCCESS);
-		}
-		else
-		{
-			print("FAILURE").
-		}
+		free(sent);
+		return (NULL);
 	}
-	char *newline = strchr(command, '\n');
-	if (newline != NULL)
-	{
-		*newline = '\0';
-	}
+	return (sent);
 }

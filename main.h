@@ -9,10 +9,18 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <errno.h>
+#include <fcntl.h>
 
-void prompt(void);
-void print(const char *string);
-void read(char *command, size_t size);
-void execute(const char *command);
+#define SEP " \t\n"
+extern char **environ;
+
+char read(void);
+int execute(char **command, char **argv);
+void free(char **mess);
+char **token(char *sent);
 
 #endif

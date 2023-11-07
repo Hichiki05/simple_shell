@@ -1,40 +1,31 @@
 #include "main.h"
 
 /*
-* execute - the fonction that execute the command
-* @command: a pointer to a string
+* execute - the fonction
+* @command: the command
+* @argv: the arguments strings
+* Return: the status nmbr
 */
-void execute(const char *command)
+
+int execute(char **command, char **argv)
 {
-	pid_t child_pid = fork();
+	pid_t child_proc;
+	int status;
 
-	if (child_pid == -1)
+	child_proc = fork();
+	if (child_proc == 0)
 	{
-		print("forking error.\n");
-		exit (FAILURE);
-	}
-	else if (child_pid == 0)
-	{
-		char *tok_string[150];
-		int count = 0;
-		int *token = strtok((char *)command, " ");
-
-		while (token != NULL)
+		if (execve(command[0], command, environ) == -1)
 		{
-			tok_string[count++] = token;
-			token = strtok(NULL, " ");
-		} 
-		tok_string[count] = NULL;
-
-		char *const envp[] = {NULL};
-
-		execve(tok_string[0], tok_string, envp);
-	
-		print("fail to execute.\n");
-		exit(FAILURE);
+			perror(argv[0]);
+			_free(command);
+			exit(0);
+		}
 	}
 	else
 	{
-		wait(NULL);
+		waitpid(child_proc, &status, 0);
+		free(command);
 	}
+	return(WEXITSTATUS(status));
 }
