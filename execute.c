@@ -1,31 +1,40 @@
 #include "main.h"
 
-/*
+/**
 * execute - the fonction
 * @command: the command
 * @argv: the arguments strings
+* @indx: a counter
 * Return: the status nmbr
 */
 
-int execute(char **command, char **argv)
+int execute(char **command, char **argv, int indx)
 {
+	char *full_command;
 	pid_t child_proc;
 	int status;
+
+	full_command = path(command[0]);
+	if (!full_command)
+	{
+		_error(argv[0], command[0], indx);
+		free(command), command = NULL;
+		return (127);
+	}
 
 	child_proc = fork();
 	if (child_proc == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(full_command, command, environ) == -1)
 		{
-			perror(argv[0]);
-			_free(command);
-			exit(0);
+			free(full_command), full_command = NULL;
+			free(command), command = NULL;
 		}
 	}
 	else
 	{
 		waitpid(child_proc, &status, 0);
-		free(command);
+		free(command), command = NULL;
 	}
-	return(WEXITSTATUS(status));
+	return (WEXITSTATUS(status));
 }
