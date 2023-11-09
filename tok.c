@@ -1,6 +1,9 @@
 #include "main.h"
-
-
+/**
+* token - the fonction
+* @sent: the message the we want to tokenize
+* Return: the tokinezed message
+*/
 char **token(char *sent)
 {
 	char *tok = NULL, *tmp = NULL;
@@ -8,42 +11,32 @@ char **token(char *sent)
 	int count = 0, i = 0;
 
 	if (!sent)
-	{
-		return (NULL);
-	}
+	return (NULL);
 	tmp = _strdup(sent);
+	tok = strtok(tmp, SEP);
 
-	tok = strtok(tmp,SEP);
 	if (tok == NULL)
 	{
-		_free(sent);
-		_free(tmp);
-		return (NULL);
-	}
-
+		free(sent), sent = NULL;
+		free(tmp), tmp = NULL;
+		return (NULL); }
 	while (tok)
 	{
 		count++;
-		tok = strtok(NULL, SEP);
-	}
-	_free(tmp);
-
+		tok = strtok(NULL, SEP);  }
+	free(tmp), tmp = NULL;
 	command = malloc(sizeof(char *) * (count + 1));
 	if (!command)
 	{
-		_free(sent);
-		return (NULL);
-	}
-
+		free(sent), sent = NULL;
+		return (NULL); }
 	tok = strtok(sent, SEP);
 
 	while (tok)
 	{
 		command[i] = _strdup(tok);
 		tok = strtok(NULL, SEP);
-		i++;
-	}
-	_free(sent);
+		i++;  }
+	free(sent), sent = NULL;
 	command[i] = NULL;
-	return (command);
-}
+	return (command);  }
