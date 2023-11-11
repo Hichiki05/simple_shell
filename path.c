@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-* path - the fonction that checks for the path
+* _path - the fonction that checks for the path
 * @sent: the command
 * Return: the path
 */

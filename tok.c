@@ -1,10 +1,10 @@
 #include "main.h"
 /**
-* token - the fonction
+* _token - the fonction
 * @sent: the message the we want to tokenize
 * Return: the tokinezed message
 */
-char **token(char *sent)
+char **_token(char *sent)
 {
 	char *tok = NULL, *tmp = NULL;
 	char **command = NULL;

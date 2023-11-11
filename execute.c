@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* execute - the fonction
+* _execute - the fonction
 * @command: the command
 * @argv: the arguments strings
 * @indx: a counter
