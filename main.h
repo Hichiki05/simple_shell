@@ -1,7 +1,5 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,15 +17,15 @@
 extern char **environ;
 
 char *_read(void);
-int execute(char **command, char **argv, int indx);
-char **token(char *sent);
+int _execute(char **command, char **argv, int indx);
+char **_token(char *sent);
 char *_env(char *var);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char *_strdup(const char *str);
-char *path(char *sent);
+char *_path(char *sent);
 void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);

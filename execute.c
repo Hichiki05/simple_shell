@@ -8,13 +8,13 @@
 * Return: the status nmbr
 */
 
-int execute(char **command, char **argv, int indx)
+int _execute(char **command, char **argv, int indx)
 {
 	char *full_command;
 	pid_t child_proc;
 	int status;
 
-	full_command = path(command[0]);
+	full_command = _path(command[0]);
 	if (!full_command)
 	{
 		_error(argv[0], command[0], indx);

@@ -69,6 +69,6 @@ void reverse_str(char *string, int lent)
 		string[first] = string[last];
 		string[last] = tmp;
 		first++;
-		last++;
+		last--;
 	}
 }

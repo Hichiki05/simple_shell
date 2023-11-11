@@ -4,7 +4,7 @@
 * @sent: the command
 * Return: the path
 */
-char *path(char *sent)
+char *_path(char *sent)
 {
 	char *env, *full, *dirc;
 	int i;
@@ -36,7 +36,7 @@ char *path(char *sent)
 			{
 				free(env), env = NULL;
 				return (full);  }
-			free(env), env = NULL;
+			free(full), full = NULL;
 
 			dirc = strtok(NULL, ":");  }
 	}

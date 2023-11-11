@@ -85,7 +85,7 @@ char *_strcpy(char *dest, char *src)
  * Return: str
  */
 
- char *_strdup(const char *str)
+char *_strdup(const char *str)
 {
 	int length = 0;
 	char *ret;

@@ -11,7 +11,7 @@ int main(int ac, char **argv)
 {
 	char *sent = NULL;
 	char **command = NULL;
-	char status = 0, indx = 0;
+	int status = 0, indx = 0;
 	(void) ac;
 
 	while (1)
@@ -19,16 +19,16 @@ int main(int ac, char **argv)
 		sent = _read();
 		if (sent == NULL)
 		{
-			if (isatty(STDOUT_FILENO))
+			if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
 		indx++;
 
-		command = token(sent);
+		command = _token(sent);
 		if (!command)
 		continue;
 
-	status = execute(command, argv, indx);
+	status = _execute(command, argv, indx);
 }
 }
