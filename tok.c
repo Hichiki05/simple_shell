@@ -13,12 +13,17 @@ char **_token(char *sent)
 	if (!sent)
 	return (NULL);
 	tmp = _strdup(sent);
+	if (!tmp)
+	{
+	free(sent);
+	return (NULL);
+	}
 	tok = strtok(tmp, SEP);
 
 	if (tok == NULL)
 	{
-		free(sent), sent = NULL;
-		free(tmp), tmp = NULL;
+		free(sent);
+		free(tmp);
 		return (NULL); }
 	while (tok)
 	{
@@ -29,14 +34,16 @@ char **_token(char *sent)
 	if (!command)
 	{
 		free(sent), sent = NULL;
+		free(tmp), tmp = NULL;
 		return (NULL); }
 	tok = strtok(sent, SEP);
 
-	while (tok)
+	for (i = 0; tok; i++)
 	{
-		command[i] = _strdup(tok);
+		command[i] = tok;
 		tok = strtok(NULL, SEP);
-		i++;  }
+		}
 	free(sent), sent = NULL;
+	free(tmp), tmp = NULL;
 	command[i] = NULL;
 	return (command);  }

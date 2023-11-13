@@ -30,5 +30,9 @@ int main(int ac, char **argv)
 		continue;
 
 	status = _execute(command, argv, indx);
+	free(command);
 }
+free(sent);
+
+return (status);
 }

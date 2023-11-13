@@ -39,6 +39,11 @@ char *_path(char *sent)
 			free(full), full = NULL;
 
 			dirc = strtok(NULL, ":");  }
+			else
+			{
+				free(env), env = NULL;
+				return (NULL);
+			}
 	}
 	free(env), env = NULL;
 	return (NULL);  }

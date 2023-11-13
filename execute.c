@@ -23,6 +23,13 @@ int _execute(char **command, char **argv, int indx)
 	}
 
 	child_proc = fork();
+	if (child_proc == -1)
+	{
+		free(full_command), full_command = 	NULL;
+		free(command), command = NULL;
+		return (-1);
+	}
+
 	if (child_proc == 0)
 	{
 		if (execve(full_command, command, environ) == -1)
@@ -36,5 +43,7 @@ int _execute(char **command, char **argv, int indx)
 		waitpid(child_proc, &status, 0);
 		free(command), command = NULL;
 	}
+	free(full_command), full_command = NULL;
+	
 	return (WEXITSTATUS(status));
 }

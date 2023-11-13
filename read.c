@@ -15,10 +15,9 @@ char *_read(void)
 	write(STDOUT_FILENO, "$ ", 2);
 
 	i = getline(&sent, &lent, stdin);
-	if (i == -1)
+	if (i == -1 || i == 0)
 	{
-		free(sent), sent = NULL; 
-		return (NULL);
+		free(sent), sent = NULL;
 	}
 	return (sent);
 }
