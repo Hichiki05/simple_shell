@@ -16,6 +16,12 @@
 #define SEP " \t\n"
 extern char **environ;
 
+typedef struct{
+    int status;
+    int err_num;
+    char **argv;
+}info_t;
+
 char *_read(void);
 int _execute(char **command, char **argv, int indx);
 char **_token(char *sent);
@@ -29,5 +35,5 @@ char *_path(char *sent);
 void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
-
+int _myexit(info_t *shell);
 #endif

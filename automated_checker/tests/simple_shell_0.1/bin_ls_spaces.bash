@@ -1,4 +1,4 @@
-é#!/bin/bash
+#!/bin/bash
 
 ################################################################################
 # Description for the intranet check (one line, support Markdown syntax)
