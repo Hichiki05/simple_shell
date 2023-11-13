@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * _myexit - Exits shell
+ * @info: Struc holding potential arguments. 
+ * constant funct prototype.
+ * Return: exits with given exit status
+ * (0) if info.argv[0] != "exit"
+ */
+
 int _myexit(info_t *shell)
 {
     char *endptr;
