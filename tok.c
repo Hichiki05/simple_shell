@@ -6,44 +6,42 @@
 */
 char **_token(char *sent)
 {
-	char *tok = NULL, *tmp = NULL;
+	char *tok = NULL,  *toktmp = NULL, *tmp = NULL;
 	char **command = NULL;
 	int count = 0, i = 0;
 
 	if (!sent)
 	return (NULL);
-	tmp = _strdup(sent);
+
+	tmp = strdup(sent);
 	if (!tmp)
 	{
 	free(sent);
 	return (NULL);
 	}
-	tok = strtok(tmp, SEP);
+	toktmp = strtok(tmp, " \t");
 
-	if (tok == NULL)
-	{
-		free(sent);
-		free(tmp);
-		return (NULL); }
-	while (tok)
+	while (toktmp)
 	{
 		count++;
-		tok = strtok(NULL, SEP);  }
+		toktmp = strtok(NULL, " \t");  }
 	free(tmp), tmp = NULL;
-	command = malloc(sizeof(char *) * (count + 1));
+
+	if (count == 0)
+		{free(sent);
+		return (NULL); }
+
+	command = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!command)
 	{
 		free(sent), sent = NULL;
-		free(tmp), tmp = NULL;
 		return (NULL); }
-	tok = strtok(sent, SEP);
 
+	tok = strtok(sent, " \t");
 	for (i = 0; tok; i++)
 	{
-		command[i] = tok;
-		tok = strtok(NULL, SEP);
-		}
-	free(sent), sent = NULL;
-	free(tmp), tmp = NULL;
+	command[i] = tok;
+	tok = strtok(NULL, " \t");}
+
 	command[i] = NULL;
-	return (command);  }
+	return (command); }

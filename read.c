@@ -18,6 +18,9 @@ char *_read(void)
 	if (i == -1 || i == 0)
 	{
 		free(sent), sent = NULL;
+		return (NULL);
 	}
+	if (i > 0 && sent[i - 1] == '\n')
+	sent[i - 1] = '\0';
 	return (sent);
 }
