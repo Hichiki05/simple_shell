@@ -1,40 +1,59 @@
 #include "main.h"
 
 /**
- * _myexit - Exits shell
- * @info: Struc holding potential arguments. 
- * constant funct prototype.
- * Return: exits with given exit status
- * (0) if info.argv[0] != "exit"
- */
+ * valid_num - check if string is a valid number
+ * @s: string
+ * 
+ * Return: 0 false or 1 true
+*/
 
-int _myexit(info_t *shell)
+int valid_num(char *param)
 {
-    char *endptr;
-
-    if (shell->argv[1])
+    while (*param)
     {
-        long exit_status = strtol(shell->argv[1], &endptr, 10);
-        if (*endptr != '\0')
-        {
-            shell->status = 2;
-            fprintf(stderr,"invalid argument: %s\n", shell->argv[1]);
-            return (-1);
-        }
-        shell->err_num = (int)exit_status;
+        if (*param < '0' || *param > '9')
+        return (0);
+        param++;
     }
-    else
-    {
-        shell->err_num = -1;
-    }
-    exit(shell->err_num);
+    return (1);
 }
 
-int main(int argc, char *argv[])
+
+/**
+ * _myexit - function to exit
+ * @info_t: struct holding potential arguments.
+ * @shell: parameter passed
+ *
+*/
+void _myexit(info_t *shell)
 {
-    info_t shell = {0, 0, argv};
+    int status = 0;
 
-    _myexit(&shell);
+    if (shell->args[1])
+    {
+        if (valid_num(shell->args[1]))
+        {
+            status = _atoi(shell->args[1]);
 
-    return (0);
+            if (status == 0 && shell->args[1][0] != '0')
+            {
+                write_error(shell, "wrong integer:");
+                write(STDERR_FILENO, shell->args[1], _strlen(shell->args[1]));
+                write(STDERR_FILENO, "\n", 1);
+                shell->status = 2;
+                return;
+            }
+        }
+        else
+        {
+            shell->status = 2;
+            write_error(shell, "wrong integer");
+            write(STDERR_FILENO, shell->args[1], _strlen(shell->args[1]));
+            write(STDERR_FILENO, "\n", 1);
+            return;
+        }
+    }
+
+    free_shell(shell);
+    exit(status);
 }
