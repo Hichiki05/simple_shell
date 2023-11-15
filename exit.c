@@ -38,14 +38,12 @@ void _myexit(info_t *shell)
 			if (status == 0 && shell->args[1][0] != '0')
 			{
 				write_error(shell, "wrong integer:");
-				write(STDERR_FILENO, shell->args[1],
-                 _strlen(shell->args[1]));
+				write(STDERR_FILENO, shell->args[1], _strlen(shell->args[1]));
 				write(STDERR_FILENO, "\n", 1);
 				shell->status = 2;
 				return;
-            }
-                        
 			}
+	}
 	else
 	{
 	shell->status = 2;
