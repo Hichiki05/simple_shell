@@ -35,7 +35,7 @@ void _myexit(info_t *shell)
         free_shell(shell);
         exit(status);
     }
-		if (valid_num(shell->args[1]))
+		else if (valid_num(shell->args[1]))
 		{
 			status = _atoi(shell->args[1]);
             if (status == -1)
