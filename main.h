@@ -14,7 +14,6 @@
 *SEP: a delimitor
 */
 
-#define MAX_ARGS 1024 /*adjust as neededS*/
 #define SEP " \t\n"
 extern char **environ;
 
