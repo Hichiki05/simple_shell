@@ -26,7 +26,6 @@ int _atoi(char *str);
 void free_shell(info_t *shell);
 void write_error(info_t *shell, const char *msg);
 int valid_num(char *param);
-
 char *_read(void);
 int _execute(char **command, char **argv, int indx);
 char **_token(char *sent);
@@ -40,11 +39,7 @@ char *_path(char *sent);
 void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
-<<<<<<< HEAD
 int _myexit(info_t *shell);
-
-=======
-void _myexit(info_t *shell);
 void print_env(info_t *info);
->>>>>>> refs/remotes/origin/main
+
 #endif
