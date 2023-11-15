@@ -29,7 +29,7 @@ void _myexit(info_t *shell)
 {
 	int status = 0;
 
-	if (shell->args[1])
+	if (shell->args[1] != NULL)
 	{
 		if (valid_num(shell->args[1]))
 		{
@@ -49,7 +49,7 @@ void _myexit(info_t *shell)
 	else
 	{
 	shell->status = 2;
-	write_error(shell, "wrong integer");
+	write_error(shell, "wrong integer:");
 	write(STDERR_FILENO, shell->args[1], _strlen(shell->args[1]));
 	write(STDERR_FILENO, "\n", 1);
 	return;
