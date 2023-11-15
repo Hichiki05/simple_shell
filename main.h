@@ -14,6 +14,7 @@
 *SEP: a delimitor
 */
 
+#define MAX_ARGS 1024 /*adjust as neededS*/
 #define SEP " \t\n"
 extern char **environ;
 
@@ -41,4 +42,5 @@ void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
 void _myexit(info_t *shell);
+void print_env(info_t *info);
 #endif
