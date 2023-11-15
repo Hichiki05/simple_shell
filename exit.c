@@ -31,11 +31,14 @@ void _myexit(info_t *shell)
 
 	if (shell->args[1] != NULL)
 	{
+        status = shell->status;
+        free_shell(shell);
+        exit(status);
+    }
 		if (valid_num(shell->args[1]))
 		{
 			status = _atoi(shell->args[1]);
-
-			if (status == 0 && shell->args[1][0] != '0')
+            if (status == -1)
 			{
 				write_error(shell, "wrong integer:");
 				write(STDERR_FILENO, shell->args[1], _strlen(shell->args[1]));
@@ -43,7 +46,9 @@ void _myexit(info_t *shell)
 				shell->status = 2;
 				return;
 			}
-	}
+            free_shell(shell);
+            exit(status);
+        }
 	else
 	{
 	shell->status = 2;
@@ -52,9 +57,4 @@ void _myexit(info_t *shell)
 	write(STDERR_FILENO, "\n", 1);
 	return;
 	}
-    write_error(shell, "exit: numeric argument required\n");
-	}
-
-	free_shell(shell);
-	exit(status);
 }
