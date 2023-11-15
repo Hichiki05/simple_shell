@@ -40,11 +40,7 @@ char *_path(char *sent);
 void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
-<<<<<<< HEAD
 int _myexit(info_t *shell);
-
-=======
 void _myexit(info_t *shell);
 void print_env(info_t *info);
->>>>>>> refs/remotes/origin/main
 #endif
