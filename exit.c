@@ -52,6 +52,7 @@ void _myexit(info_t *shell)
 	write(STDERR_FILENO, "\n", 1);
 	return;
 	}
+    write_error(shell, "exit: numeric argument required\n");
 	}
 
 	free_shell(shell);
