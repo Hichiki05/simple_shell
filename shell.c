@@ -31,7 +31,7 @@ int main(int ac, char **argv)
 
 	status = _execute(command, argv, indx);
 	free(sent);
-	free(command)
+	free(command);
 }
 
 return (status);
