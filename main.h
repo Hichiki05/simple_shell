@@ -10,17 +10,26 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
-/*
-*SEP: a delimitor
+/**
+* SEP - a macro
 */
 
 #define SEP " \t\n"
 extern char **environ;
 
-typedef struct{
-    int status;
-    char **args;
-}info_t;
+/**
+ * struct info_s - a structure representing status and arguments
+ * @status: an integer representing the status
+ * @args: a pointer to an array of strings representing arguments
+ *
+ * Description: This structure is used to store information about the status
+ *              of a command and its arguments.
+ */
+typedef struct info_s
+{
+int status;
+char **args;
+} info_t;
 
 int _atoi(char *str);
 void free_shell(info_t *shell);
