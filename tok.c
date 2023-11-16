@@ -40,8 +40,8 @@ char **_token(char *sent)
 	tok = strtok(sent, " \t");
 	for (i = 0; tok; i++)
 	{
-	command[i] = tok;
+		command[i] = tok;
 	tok = strtok(NULL, " \t");  }
-	tok = strtok(NULL, " \t"); }
+	
 	command[i] = NULL;
 	return (command); }

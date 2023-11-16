@@ -36,13 +36,3 @@ else
 {
 	waitpid(child_proc, &status, 0); }
 	return (WEXITSTATUS(status)); }
-			perror("execve");
-		}
-	}
-	else
-	{
-		waitpid(child_proc, &status, 0);
-	}
-
-	return (WEXITSTATUS(status));
-}

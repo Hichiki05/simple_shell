@@ -72,14 +72,3 @@ void reverse_str(char *string, int lent)
 		last--;
 	}
 }
-
-/**
- * free_shell - function to free memory
- * @shell: pointer to info_t struct to be freed
-*/
-
-void free_shell(info_t *shell)
-{
-	free_shell(shell);
-
-}
