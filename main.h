@@ -49,5 +49,6 @@ void handle_built(char **command, char **argv, int *status, int indx);
 int _build(char *command);
 void _exit_all(char **command, int *status);
 void _print_env(char **command, int *status);
+ssize_t _getline(char **lineptr, size_t *n, int fd);
 
 #endif
