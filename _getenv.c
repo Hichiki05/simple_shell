@@ -15,7 +15,7 @@ char *_env(char *var)
 		tmp = _strdup(environ[i]);
 		tok = strtok(tmp, "=");
 
-		if (_strcmp(tok, var) == 0)
+		if (tok != NULL && _strcmp(tok, var) == 0)
 		{
 			tok2 = strtok(NULL, "\n");
 			env = _strdup(tok2);

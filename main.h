@@ -47,7 +47,13 @@ char *_itoa(int i);
 void reverse_str(char *string, int lent);
 void handle_built(char **command, char **argv, int *status, int indx);
 int _build(char *command);
-void _exit_all(char **command, int *status);
+void _exit_all(char **command, char **argv, int *status, int index);
 void _print_env(char **command, int *status);
+int _build(char *command);
+void handle_built(char **command, char **argv, int *status, int index);
+void _exit_all(char **command, char **argv, int *status, int index);
+void _print_env(char **command, int *status);
+int _positive(char *srtr);
+int _atoi(char *srtr);
 
 #endif
