@@ -41,7 +41,7 @@ char **_token(char *sent)
 	for (i = 0; tok; i++)
 	{
 	command[i] = tok;
-	tok = strtok(NULL, " \t");}
+	tok = strtok(NULL, " \t"); }
 
 	command[i] = NULL;
 	return (command); }

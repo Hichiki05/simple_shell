@@ -10,17 +10,24 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
-/*
-*SEP: a delimitor
-*/
+
+/**
+ * SEP - A delimiter for tokenization
+ */
 
 #define SEP " \t\n"
 extern char **environ;
+/**
+ * struct info_t - Structure for shell information
+ * @status: Status of the shell
+ * @args: Arguments for the shell
+ */
 
-typedef struct{
-    int status;
-    char **args;
-}info_t;
+typedef struct info_t
+{
+	int status;
+	char **args;
+} info_t;
 
 int _atoi(char *str);
 void free_shell(info_t *shell);
@@ -40,5 +47,11 @@ void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
 int _myexit(info_t *shell);
+void handle_built(char **command, char **argv, int *status, int indx);
+int _build(char *command);
+void _exit_all(char **command, char **argv, int *status, int index);
+void _print_env(char **command, int *status);
+int _positive(char *srtr);
+int _atoi(char *srtr);
 
 #endif

@@ -35,13 +35,13 @@ if (command[0][0] != '/' && command[0][0] != '.')
 	{
 		if (execve(command[0], command, NULL) == -1)
 		{
-				perror("execve");
-		}
-	}
+			perror("execve");
+			}
+			}
 	else
 	{
 		waitpid(child_proc, &status, 0);
 	}
-	
+
 	return (WEXITSTATUS(status));
 }

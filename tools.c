@@ -72,3 +72,27 @@ void reverse_str(char *string, int lent)
 		last--;
 	}
 }
+
+/**
+ * _atoi - function to convert string to int
+ * @str: string to be converted
+ * Return: converted int
+*/
+int _atoi(char *str)
+{
+	int result = 0;
+	int sign = 1;
+
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (sign * result);
+}
