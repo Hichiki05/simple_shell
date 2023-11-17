@@ -5,13 +5,12 @@
 * @argv: the arguments and the name of the program
 * Return: NULL
 */
-
-
 int main(int ac, char **argv)
 {
 	char *sent = NULL;
 	char **command = NULL;
-	int status = 0, indx = 0;
+	int status = 0, index = 0;
+	int i;
 	(void) ac;
 
 	while (1)
@@ -21,18 +20,30 @@ int main(int ac, char **argv)
 		{
 			if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
+			free(sent);
 			return (status);
+
 		}
-		indx++;
+		index++;
 
 		command = _token(sent);
 		if (!command)
-		continue;
-
-	status = _execute(command, argv, indx);
-	free(sent);
-	free(command);
+		{
+			free(sent);
+			continue;
+		}
+if (_build(command[0]))
+	handle_built(command, argv, &status, index);
+else
+{
+	status = _execute(command, argv, index);
 }
 
-return (status);
+for (i = 0; command[i]; i++)
+{
+	free(command[i]);
+}
+free(command);
+free(sent);
+	}
 }
