@@ -88,7 +88,7 @@ void _exit_all(char **command, char **argv, int *status, int index)
 /**
 * _print_env - the fnct
 * @command: a para
-* @satatus: a para
+* @status: a para
 * Return: a value
 */
 void _print_env(char **command, int *status)

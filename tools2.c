@@ -21,7 +21,7 @@ int _positive(char *srtr)
 /**
 * _atoi - the function
 * @srtr: a string
-* @Return: a value
+* Return: a value
 */
 int _atoi(char *srtr)
 {
