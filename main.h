@@ -49,15 +49,12 @@ void handle_built(char **command, char **argv, int *status, int indx);
 int _build(char *command);
 void _exit_all(char **command, char **argv, int *status, int index);
 void _print_env(char **command, int *status);
-<<<<<<< HEAD
 int _build(char *command);
 void handle_built(char **command, char **argv, int *status, int index);
 void _exit_all(char **command, char **argv, int *status, int index);
 void _print_env(char **command, int *status);
 int _positive(char *srtr);
 int _atoi(char *srtr);
-=======
 ssize_t _getline(char **lineptr, size_t *n, int fd);
->>>>>>> refs/remotes/origin/main
 
 #endif
