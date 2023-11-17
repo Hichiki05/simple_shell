@@ -21,6 +21,6 @@ char *_read(void)
 		return (NULL);
 	}
 	if (i > 0 && sent[i - 1] == '\n')
-	sent[i - 1] = '\0';
+		sent[i - 1] = '\0';
 	return (sent);
 }
