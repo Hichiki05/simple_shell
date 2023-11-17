@@ -9,28 +9,27 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <limits.h>
 /**
-* SEP - a macro
+* SEP - a delimitor
 */
 
 #define SEP " \t\n"
 extern char **environ;
+
 /**
- * struct info_s - a structure representing status and arguments
- * @status: an integer representing the status
- * @args: a pointer to an array of strings representing arguments
- *
- * Description: This structure is used to store information about the status
- *              of a command and its arguments.
+ * struct info_t - Structure for shell information
+ * @status: Status of the shell
+ * @argv: Arguments for the shell
+ * @err_num: a para
  */
-typedef struct info_s
+
+typedef struct info_t
 {
-int status;
-char **args;
+	int status;
+	int err_num;
+	char **argv;
 } info_t;
 
-int _atoi(char *str);
 char *_read(void);
 int _execute(char **command, char **argv, int indx);
 char **_token(char *sent);
@@ -44,11 +43,6 @@ char *_path(char *sent);
 void _error(char *name, char *comm, int indx);
 char *_itoa(int i);
 void reverse_str(char *string, int lent);
-void handle_built(char **command, char **argv, int *status, int indx);
-int _build(char *command);
-void _exit_all(char **command, char **argv, int *status, int index);
-void _print_env(char **command, int *status);
-int _positive(char *srtr);
-int _atoi(char *srtr);
+int _myexit(info_t *shell);
 
 #endif
