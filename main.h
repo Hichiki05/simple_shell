@@ -28,8 +28,11 @@ typedef struct info_t
 	int status;
 	int err_num;
 	char **argv;
+	char *buffer;
 } info_t;
 
+int _getline(info_t *info);
+char *realo_line(char **line, unsigned int size1, unsigned int size2);
 char *_read(void);
 int _execute(char **command, char **argv, int indx);
 char **_token(char *sent);
