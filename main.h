@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -23,7 +24,7 @@ extern char **environ;
  * @err_num: a para
  */
 
-typedef struct info_t
+typedef struct info
 {
 	int status;
 	int err_num;
@@ -31,8 +32,9 @@ typedef struct info_t
 	char *buffer;
 } info_t;
 
-int _getline(info_t *info);
-char *realo_line(char **line, unsigned int size1, unsigned int size2);
+void _free(char **argv);
+ssize_t _getline(char **lineptr, size_t *n, int fd);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_read(void);
 int _execute(char **command, char **argv, int indx);
 char **_token(char *sent);
